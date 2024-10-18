@@ -2,6 +2,7 @@ package sv.edu.catolica.neighborpeace;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent objVentana = new Intent(MainActivity.this, Profile.class);
+                Intent objVentana = new Intent(MainActivity.this, ContactsContract.Profile.class);
                 startActivity(objVentana);
 
             }
