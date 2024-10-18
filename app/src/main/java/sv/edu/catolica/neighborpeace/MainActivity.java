@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent objVentana = new Intent(MainActivity.this, Profile.class);
                 startActivity(objVentana);
+
             }
         });
     }

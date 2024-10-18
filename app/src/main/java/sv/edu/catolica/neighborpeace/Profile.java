@@ -30,7 +30,9 @@ public class Profile extends AppCompatActivity {
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(Profile.this, MainActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -41,6 +43,7 @@ public class Profile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent objVentana = new Intent(Profile.this, Edit_profile.class);
                 startActivity(objVentana);
+
             }
         });
     }

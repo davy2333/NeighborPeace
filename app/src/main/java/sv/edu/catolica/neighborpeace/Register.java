@@ -42,6 +42,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 Intent objVentana = new Intent(Register.this, login.class);
                 startActivity(objVentana);
+
             }
         });
 
