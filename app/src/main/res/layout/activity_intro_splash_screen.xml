@@ -13,7 +13,7 @@
         android:layout_width="400dp"
         android:layout_height="400dp"
         android:src="@drawable/logo"
-        android:contentDescription="logoApp"
+        android:contentDescription="@string/logoapp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,14 +23,14 @@
         android:id="@+id/teamText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FROM\n@EQUIPODEDESARROLLO"
-        android:textColor="@android:color/black"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/from_n_equipodedesarrollo"
+        android:textColor="#0097A7"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/logoImage"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">NeighborPeace</string>
+    <string name="agregar_problema">Agregar Problema</string>
+    <string name="historial">Historial</string>
+    <string name="home">Home</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="retroceder">Retroceder</string>
+    <string name="confirmar_contrase_a">Confirmar Contraseña</string>
+    <string name="direcci_n">Dirección</string>
+    <string name="email">Email</string>
+    <string name="nombre">Nombre</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="registro">Registro</string>
+    <string name="tel_fono">Teléfono</string>
+    <string name="acepto_los_t_rminos_y_condiciones">Acepto los términos y condiciones</string>
+    <string name="home2">HOME</string>
+    <string name="logotipo_de_neighborpeace">Logotipo de NeighborPeace</string>
+    <string name="imagen_de_perfil">Imagen de perfil</string>
+    <string name="buscar_en_neighbourpeace">Buscar en NeighbourPeace</string>
+    <string name="problemas_pendientes_de_resolver">Problemas pendientes de resolver</string>
+    <string name="nombre_del_usuario">NOMBRE DEL USUARIO</string>
+    <string name="email2">Email</string>
+    <string name="has_olvidado_tu_contrase_a">¿Has olvidado tu contraseña?</string>
+    <string name="iniciar_sesi_n">Iniciar Sesión</string>
+    <string name="logoapplogin">logoAppLogin</string>
+    <string name="contrase_a2">Contraseña</string>
+    <string name="registrarse2">Registrarse</string>
+    <string name="logoapp">logoApp</string>
+    <string name="from_n_equipodedesarrollo">FROM\n@EQUIPODEDESARROLLO</string>
 </resources>

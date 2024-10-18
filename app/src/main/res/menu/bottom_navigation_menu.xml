@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Primer Botón: HOME -->
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:titleCondensed="Home"/>
+
+    <!-- Segundo Botón: AGREGAR PROBLEMA -->
+    <item
+        android:id="@+id/navigation_add_problem"
+        android:icon="@drawable/ic_pluss"
+        android:title="@string/agregar_problema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:titleCondensed="Agregar"/>
+
+    <!-- Cuarto Botón: HISTORIAL -->
+    <item
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/ic_history"
+        android:title="@string/historial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:titleCondensed="Historial"/>
+
+    <!-- Quinto Botón: NOTIFICACIONES -->
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/notificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:titleCondensed="Notificaciones"/>
+
+</menu>

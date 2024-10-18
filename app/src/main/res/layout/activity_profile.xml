@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:background="@android:color/black">
+
+    <!-- Icono de Flecha para retroceder -->
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="?attr/homeAsUpIndicator"
+        android:contentDescription="@string/retroceder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        app:tint="@color/logo_color" />
+
+
+    <!-- Texto HOME -->
+    <TextView
+        android:id="@+id/homeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HOME"
+        android:textColor="#5A1C84"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/backArrow"
+        app:layout_constraintTop_toTopOf="@id/backArrow"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Título: Perfil -->
+    <TextView
+        android:id="@+id/titleProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Perfil"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/homeText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp" />
+
+    <!-- Imagen de perfil -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_launcher_profile"
+        android:contentDescription="Imagen de perfil"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circular_border"
+        app:layout_constraintTop_toBottomOf="@id/titleProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Email Label -->
+    <TextView
+        android:id="@+id/emailLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/profileImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/emailValue"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontalWeight="1" />
+
+    <!-- Email Value -->
+    <TextView
+        android:id="@+id/emailValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="walterflores@gmail.com"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/emailLabel"
+        app:layout_constraintStart_toEndOf="@id/emailLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontalWeight="3" />
+
+    <!-- Línea divisoria entre Email y Nombre -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/emailLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Nombre -->
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/emailLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/nameValue"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontalWeight="1" />
+
+    <TextView
+        android:id="@+id/nameValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:text="Walter"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/editNameButton"
+        app:layout_constraintHorizontalWeight="3"
+        app:layout_constraintStart_toEndOf="@id/nameLabel"
+        app:layout_constraintTop_toTopOf="@id/nameLabel" />
+
+    <ImageButton
+        android:id="@+id/editNameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_right_arrow"
+        android:contentDescription="Editar nombre"
+        app:layout_constraintStart_toEndOf="@id/nameValue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nameLabel"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Línea divisoria entre Nombre y Ubicación -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/nameLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Ubicación -->
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ubicación"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/nameLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/locationValue"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontalWeight="1" />
+
+    <TextView
+        android:id="@+id/locationValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Santa Ana"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/locationLabel"
+        app:layout_constraintStart_toEndOf="@id/locationLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontalWeight="3" />
+
+    <!-- Línea divisoria entre Ubicación y Teléfono -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/locationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Teléfono -->
+    <TextView
+        android:id="@+id/phoneLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Teléfono"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/locationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/phoneValue"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontalWeight="1" />
+
+    <TextView
+        android:id="@+id/phoneValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="7089 5467"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/phoneLabel"
+        app:layout_constraintStart_toEndOf="@id/phoneLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontalWeight="3" />
+
+
+    <!-- Botón para Editar Perfil -->
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Editar Perfil"
+        android:backgroundTint="@color/logo_color"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/phoneLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
