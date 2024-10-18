@@ -22,7 +22,6 @@
         android:layout_marginStart="16dp"
         app:tint="@color/logo_color" />
 
-
     <!-- Texto HOME -->
     <TextView
         android:id="@+id/homeText"
@@ -78,8 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/emailValue"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontalWeight="1" />
+        android:layout_marginEnd="8dp" />
 
     <!-- Email Value -->
     <TextView
@@ -92,8 +90,7 @@
         app:layout_constraintTop_toTopOf="@id/emailLabel"
         app:layout_constraintStart_toEndOf="@id/emailLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintHorizontalWeight="3" />
+        android:layout_marginStart="8dp" />
 
     <!-- Línea divisoria entre Email y Nombre -->
     <View
@@ -117,8 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/nameValue"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontalWeight="1" />
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/nameValue"
@@ -129,7 +125,6 @@
         android:textColor="#A9A9A9"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/editNameButton"
-        app:layout_constraintHorizontalWeight="3"
         app:layout_constraintStart_toEndOf="@id/nameLabel"
         app:layout_constraintTop_toTopOf="@id/nameLabel" />
 
@@ -167,8 +162,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/locationValue"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontalWeight="1" />
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/locationValue"
@@ -180,8 +174,7 @@
         app:layout_constraintTop_toTopOf="@id/locationLabel"
         app:layout_constraintStart_toEndOf="@id/locationLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintHorizontalWeight="3" />
+        android:layout_marginStart="8dp" />
 
     <!-- Línea divisoria entre Ubicación y Teléfono -->
     <View
@@ -205,8 +198,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/phoneValue"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontalWeight="1" />
+        android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/phoneValue"
@@ -218,25 +210,6 @@
         app:layout_constraintTop_toTopOf="@id/phoneLabel"
         app:layout_constraintStart_toEndOf="@id/phoneLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp"
-        app:layout_constraintHorizontalWeight="3" />
-
-
-    <!-- Botón para Editar Perfil -->
-    <Button
-        android:id="@+id/editProfileButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Editar Perfil"
-        android:backgroundTint="@color/logo_color"
-        android:textColor="@android:color/white"
-        app:layout_constraintTop_toBottomOf="@id/phoneLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
-
-
+        android:layout_marginStart="8dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
