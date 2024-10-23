@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -49,29 +48,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp" />
 
-    <!-- Imagen de perfil -->
-    <ImageView
-        android:id="@+id/profileImage"
+    <!-- CardView para la imagen de perfil -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileImageContainer"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_launcher_profile"
-        android:contentDescription="Imagen de perfil"
-        android:scaleType="centerCrop"
-        android:background="@drawable/circular_border"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@android:color/transparent"
         app:layout_constraintTop_toBottomOf="@id/titleEditProfile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Imagen de perfil -->
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher_profile"
+            android:contentDescription="Imagen de perfil"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
 
     <!-- Botón para cambiar la imagen de perfil -->
     <Button
         android:id="@+id/changeImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cambiar Imagen"
+        android:text="@string/cambiar_imagen"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/logo_color"
-        app:layout_constraintTop_toBottomOf="@id/profileImage"
+        app:layout_constraintTop_toBottomOf="@id/profileImageContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
@@ -111,12 +118,13 @@
                 android:id="@+id/emailEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingresa tu email"
-                android:textColor="#A9A9A9"
-                android:inputType="textEmailAddress"
-                android:textSize="16sp"
                 android:background="@drawable/edittext_background"
-                android:padding="10dp" />
+                android:hint="Ingresa tu email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="#A9A9A9"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <!-- Nombre -->
             <TextView
@@ -133,12 +141,13 @@
                 android:id="@+id/nameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingresa tu nombre"
-                android:textColor="#A9A9A9"
-                android:inputType="textPersonName"
-                android:textSize="16sp"
                 android:background="@drawable/edittext_background"
-                android:padding="10dp" />
+                android:hint="Ingresa tu nombre"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="#A9A9A9"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <!-- Ubicación -->
             <TextView
@@ -155,12 +164,13 @@
                 android:id="@+id/locationEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingresa tu ubicación"
-                android:textColor="#A9A9A9"
-                android:inputType="textPostalAddress"
-                android:textSize="16sp"
                 android:background="@drawable/edittext_background"
-                android:padding="10dp" />
+                android:hint="Ingresa tu ubicación"
+                android:inputType="textPostalAddress"
+                android:padding="10dp"
+                android:textColor="#A9A9A9"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <!-- Teléfono -->
             <TextView
@@ -177,12 +187,13 @@
                 android:id="@+id/phoneEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingresa tu teléfono"
-                android:textColor="#A9A9A9"
-                android:inputType="phone"
-                android:textSize="16sp"
                 android:background="@drawable/edittext_background"
-                android:padding="10dp" />
+                android:hint="Ingresa tu teléfono"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="#A9A9A9"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <!-- Botón para guardar cambios -->
             <Button

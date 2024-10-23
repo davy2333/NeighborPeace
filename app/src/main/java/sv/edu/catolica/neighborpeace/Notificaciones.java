@@ -1,75 +1,66 @@
 package sv.edu.catolica.neighborpeace;
 
+import static sv.edu.catolica.neighborpeace.R.id.navigation_home;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class Notificaciones extends AppCompatActivity {
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  // Asegúrate de que esté cargando el layout correcto
-        // Aquí está el ID 'main' del ConstraintLayout
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_notificaciones);
+
+        // Manejo de los Insets para evitar superposición con las barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+// Agregando el menú de navegación inferior
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
 
-        // Listener para manejar los clics en los ítems del menú
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
                 if (id == R.id.navigation_home) {
-                    Toast toast1 = Toast.makeText(getApplicationContext(),
-                            "Estás en la pantalla principal", Toast.LENGTH_SHORT);
-                    toast1.show();
-
-//                    Intent pantalla = new Intent(MainActivity.this, MainActivity.class);
-//                    startActivity(pantalla);
+                    Intent pantalla = new Intent(Notificaciones.this, MainActivity.class);
+                    startActivity(pantalla);
                 } else if (id == R.id.navigation_add_problem) {
-                    Intent pantalla = new Intent(MainActivity.this, Problems.class);
+                    Intent pantalla = new Intent(Notificaciones.this, Problems.class);
                     startActivity(pantalla);
                 } else if (id == R.id.navigation_history) {
-                    Intent pantalla = new Intent(MainActivity.this, History.class);
+                    Intent pantalla = new Intent(Notificaciones.this, History.class);
                     startActivity(pantalla);
                 } else if (id == R.id.navigation_notifications) {
-                    Intent pantalla = new Intent(MainActivity.this, Notificaciones.class);
-                    startActivity(pantalla);
+                    Toast toast1 = Toast.makeText(getApplicationContext(),
+                            "Estás en la pantalla notificaciones", Toast.LENGTH_SHORT);
+                    toast1.show();
                 }
 
                 return true;
             }
         });
 
-        ImageButton btnPerfil = findViewById(R.id.profileButton);
-
-        btnPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent objVentana = new Intent(MainActivity.this, Profile.class);
-                startActivity(objVentana);
-
-            }
-        });
-
+        // Configuración para la lista de notificaciones
+        ListView notificationsListView = findViewById(R.id.notificationsListView);
+        // Aquí puedes configurar tu adaptador y los datos para la lista de notificaciones
     }
-
-
 }

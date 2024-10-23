@@ -3,4 +3,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="logo_color">#5A1C84</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!-- Agregar nuevos colores para tu BottomNavigationView -->
+    <color name="colorBottomNavBackground">#000000</color> <!-- Color de fondo negro -->
+    <color name="colorBottomNavIcon">#FFFFFF</color> <!-- Color blanco para íconos -->
+    <color name="colorBottomNavText">#FFFFFF</color> <!-- Color blanco para texto -->
 </resources>
+
