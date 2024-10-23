@@ -1,49 +1,66 @@
-package sv.edu.catolica.neighborpeace;
-
-import android.content.Intent;
+package sv.edu.catolica.neighborpeace;import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import androidx.activity.EdgeToEdge;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class Problems extends AppCompatActivity {
+import sv.edu.catolica.neighborpeace.Edit_profile;
+
+public class Profile extends AppCompatActivity {
+
+    private ImageView backArrow, profileImage;
+    private TextView homeText, titleProfile, emailValue, nameValue, locationValue, phoneValue;
+    private Button editProfileButton, logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_problems); // Asegúrate de que el layout esté correctamente referenciado.
+        setContentView(R.layout.activity_profile);
 
-        // Manejo de insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.problemsLayout), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Inicializar vistas
+        backArrow = findViewById(R.id.backArrow);
 
-        // Botón de retroceso
-        ImageView backArrow = findViewById(R.id.backArrowProblems);
+        titleProfile = findViewById(R.id.titleProfile);
+        profileImage = findViewById(R.id.profileImage);
+        emailValue = findViewById(R.id.emailValue);
+        nameValue = findViewById(R.id.nameValue);
+        locationValue = findViewById(R.id.locationValue);
+        phoneValue = findViewById(R.id.phoneValue);
+        editProfileButton = findViewById(R.id.editProfileButton);
+        logoutButton = findViewById(R.id.logoutButton);
+
+        // Configurar los datos del perfil (puedes cambiar estos valores por los obtenidos de tu backend o base de datos)
+        emailValue.setText("walterflores@gmail.com");
+        nameValue.setText("Walter Flores");
+        locationValue.setText("Santa Ana");
+        phoneValue.setText("7089 5467");
+
+        // Acción de regresar al pulsar la flecha
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Problems.this, MainActivity.class);
-                startActivity(intent);
-                finish(); // Terminar la actividad actual si lo deseas
+                finish();  // Regresa a la actividad anterior
             }
         });
 
-        // Botón para publicar el problema
-        Button submitProblemButton = findViewById(R.id.submitProblemButton);
-        submitProblemButton.setOnClickListener(new View.OnClickListener() {
+        // Configurar el botón para editar el perfil
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Aquí puedes agregar la lógica para manejar la publicación del problema
-                // Por ahora, simplemente haremos un Toast o redirigir a otra pantalla si es necesario
+                // Lógica para abrir la pantalla de edición de perfil
+                    Intent intent = new Intent(Profile.this, Edit_profile.class);
+                startActivity(intent);
+            }
+        });
+
+        // Configurar el botón de cerrar sesión
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lógica para cerrar sesión (puedes agregar la lógica necesaria aquí)
+                finish();  // Termina la actividad actual
             }
         });
     }

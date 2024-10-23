@@ -32,7 +32,8 @@ public class Notificaciones extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-// Agregando el menú de navegación inferior
+
+        // Agregando el menú de navegación inferior
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,5 +63,15 @@ public class Notificaciones extends AppCompatActivity {
         // Configuración para la lista de notificaciones
         ListView notificationsListView = findViewById(R.id.notificationsListView);
         // Aquí puedes configurar tu adaptador y los datos para la lista de notificaciones
+    }
+
+    // Sobrescribir el comportamiento del botón de retroceso para ir a la pantalla principal (Home)
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Notificaciones.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }
