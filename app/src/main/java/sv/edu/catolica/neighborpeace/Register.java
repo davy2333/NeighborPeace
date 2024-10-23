@@ -34,7 +34,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     RequestQueue requestQueueu;
 
-    private static final String URL1 = "http://192.168.56.1/neigbourdb/save.php";
+    private static final String URL1 = "http://localhost/neigbourdb/save.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +66,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 startActivity(objVentana);
             }
         });
-
-
 
     }
     private void initUi(){

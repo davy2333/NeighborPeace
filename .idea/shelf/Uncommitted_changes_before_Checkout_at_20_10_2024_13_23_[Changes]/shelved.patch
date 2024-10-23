@@ -1,0 +1,51 @@
+Index: app/src/main/java/sv/edu/catolica/neighborpeace/Profile.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package sv.edu.catolica.neighborpeace;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\npublic class Problems extends AppCompatActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_problems); // Asegúrate de que el layout esté correctamente referenciado.\r\n\r\n        // Manejo de insets\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.problemsLayout), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n\r\n        // Botón de retroceso\r\n        ImageView backArrow = findViewById(R.id.backArrowProblems);\r\n        backArrow.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(Problems.this, MainActivity.class);\r\n                startActivity(intent);\r\n                finish(); // Terminar la actividad actual si lo deseas\r\n            }\r\n        });\r\n\r\n        // Botón para publicar el problema\r\n        Button submitProblemButton = findViewById(R.id.submitProblemButton);\r\n        submitProblemButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                // Aquí puedes agregar la lógica para manejar la publicación del problema\r\n                // Por ahora, simplemente haremos un Toast o redirigir a otra pantalla si es necesario\r\n            }\r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/sv/edu/catolica/neighborpeace/Profile.java b/app/src/main/java/sv/edu/catolica/neighborpeace/Profile.java
+--- a/app/src/main/java/sv/edu/catolica/neighborpeace/Profile.java	
++++ b/app/src/main/java/sv/edu/catolica/neighborpeace/Profile.java	
+@@ -11,7 +11,7 @@
+ import androidx.core.view.ViewCompat;
+ import androidx.core.view.WindowInsetsCompat;
+ 
+-public class Problems extends AppCompatActivity {
++public class Profile extends AppCompatActivity {
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -31,7 +31,7 @@
+         backArrow.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                Intent intent = new Intent(Problems.this, MainActivity.class);
++                Intent intent = new Intent(Profile.this, MainActivity.class);
+                 startActivity(intent);
+                 finish(); // Terminar la actividad actual si lo deseas
+             }
+Index: .idea/material_theme_project_new.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/material_theme_project_new.xml b/.idea/material_theme_project_new.xml
+new file mode 100644
+--- /dev/null	
++++ b/.idea/material_theme_project_new.xml	
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="MaterialThemeProjectNewConfig">
++    <option name="metadata">
++      <MTProjectMetadataState>
++        <option name="migrated" value="true" />
++        <option name="pristineConfig" value="false" />
++        <option name="userId" value="5e825cdb:191ed92e553:-7ffe" />
++      </MTProjectMetadataState>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
