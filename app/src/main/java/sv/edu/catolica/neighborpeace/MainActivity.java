@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;  // Importación del botón
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -41,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
                             "Estás en la pantalla principal", Toast.LENGTH_SHORT);
                     toast1.show();
 
-//                    Intent pantalla = new Intent(MainActivity.this, MainActivity.class);
-//                    startActivity(pantalla);
                 } else if (id == R.id.navigation_add_problem) {
                     Intent pantalla = new Intent(MainActivity.this, Problems.class);
                     startActivity(pantalla);
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Configuración del botón de perfil
         ImageButton btnPerfil = findViewById(R.id.profileButton);
 
         btnPerfil.setOnClickListener(new View.OnClickListener() {
@@ -65,11 +65,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent objVentana = new Intent(MainActivity.this, Profile.class);
                 startActivity(objVentana);
-
             }
         });
 
+        // Configuración del botón de Chat
+        Button chatButton = findViewById(R.id.chatButton);  // Encuentra el botón de chat por su ID
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inicia la actividad de Chat cuando se presiona el botón
+                Intent intent = new Intent(MainActivity.this, Chat.class); // Asegúrate de que Chat.class exista
+                startActivity(intent);
+            }
+        });
     }
-
-
 }

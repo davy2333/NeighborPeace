@@ -152,7 +152,7 @@
                 android:id="@+id/phoneValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="7089 5467"
+                android:text="@string/_7089_5467"
                 android:textColor="#A9A9A9"
                 android:textSize="16sp"
                 android:layout_marginTop="4dp" />
@@ -163,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Editar Perfil"
+                android:text="@string/editar_perfil"
                 android:backgroundTint="@color/logo_color"
                 android:textColor="@android:color/white" />
 

@@ -58,7 +58,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/search_background"
-        android:hint="@string/buscar_en_neighbourpeace"
+        android:hint="Buscar en NeighborPeace"
         android:padding="10dp"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
@@ -104,6 +104,21 @@
         app:layout_constraintEnd_toEndOf="parent">
     </LinearLayout>
 
+    <!-- Nuevo Botón para Chat -->
+    <Button
+        android:id="@+id/chatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:text="Ir al Chat"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemList" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
@@ -116,6 +131,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:labelVisibilityMode="labeled" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
