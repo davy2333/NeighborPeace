@@ -1,77 +1,72 @@
 package sv.edu.catolica.neighborpeace;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageButton chatButton;
+    private ImageButton profileButton; // Botón de perfil
+    private TextView userNameTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main); // Asegúrate de que este archivo XML exista.
+        setContentView(R.layout.activity_main);
 
-        // Manejo de insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        // Inicializar vistas
+        chatButton = findViewById(R.id.chatButton);
+        profileButton = findViewById(R.id.profileButton); // Inicializar el botón de perfil
+        userNameTextView = findViewById(R.id.userNameTextView);
+
+        // Configurar el botón de chat
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Iniciar la actividad de chat
+                Intent chatIntent = new Intent(MainActivity.this, Chat.class);
+                startActivity(chatIntent);
+            }
         });
 
-        // Configuración del BottomNavigationView
-        setupBottomNavigationView();
+        // Configurar el botón de perfil
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Iniciar la actividad de perfil
+                Intent profileIntent = new Intent(MainActivity.this, Profile.class);
+                startActivity(profileIntent);
+            }
+        });
 
-        // Configuración del botón de perfil
-        setupProfileButton();
-
-        // Configuración del botón de Chat
-        setupChatButton();
-    }
-
-    // Método para configurar el BottomNavigationView
-    private void setupBottomNavigationView() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation); // Verifica que este ID esté en tu XML.
-
+        // Configurar el menú de navegación inferior
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                // Manejo de la selección de ítems
+
                 if (id == R.id.navigation_home) {
-                    if (!(MainActivity.this instanceof MainActivity)) {
-                        Intent pantalla = new Intent(MainActivity.this, MainActivity.class);
-                        startActivity(pantalla);
-                    } else {
-                        Toast.makeText(MainActivity.this, "Ya estás en la pantalla principal", Toast.LENGTH_SHORT).show();
-                    }
+                    // Ya estamos en la pantalla principal
                     return true;
                 } else if (id == R.id.navigation_add_problem) {
-                    Intent pantalla = new Intent(MainActivity.this, Problems.class);
-                    startActivity(pantalla);
+                    Intent addProblemIntent = new Intent(MainActivity.this, Problems.class);
+                    startActivity(addProblemIntent);
                     return true;
                 } else if (id == R.id.navigation_history) {
-                    Intent pantalla = new Intent(MainActivity.this, History.class);
-                    startActivity(pantalla);
+                    Intent historyIntent = new Intent(MainActivity.this, History.class);
+                    startActivity(historyIntent);
                     return true;
                 } else if (id == R.id.navigation_notifications) {
-                    Intent pantalla = new Intent(MainActivity.this, Notificaciones.class);
-                    startActivity(pantalla);
+                    Intent notificationsIntent = new Intent(MainActivity.this, Notificaciones.class);
+                    startActivity(notificationsIntent);
                     return true;
                 }
 
@@ -80,45 +75,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Método para configurar el botón de perfil
-    private void setupProfileButton() {
-        ImageButton btnPerfil = findViewById(R.id.profileButton); // Verifica que este ID esté en tu XML.
-        btnPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Profile.class)); // Asegúrate de que Profile.class esté definida.
-            }
-        });
-    }
-
-    // Método para configurar el botón de Chat
-    private void setupChatButton() {
-        Button chatButton = findViewById(R.id.chatButton); // Verifica que este ID esté en tu XML.
-        chatButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Chat.class)); // Asegúrate de que Chat.class esté definida.
-            }
-        });
-    }
-
     @Override
     public void onBackPressed() {
-        if (isTaskRoot()) {
-            // Confirmar salida cuando el usuario está en Home y presiona atrás
-            new AlertDialog.Builder(this)
-                    .setTitle("Confirmar Salida")
-                    .setMessage("¿Estás seguro de que quieres salir?")
-                    .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish(); // Cierra la aplicación
-                        }
-                    })
-                    .setNegativeButton("No", null)
-                    .show();
-        } else {
-            // Retroceso a la actividad anterior sin cerrar la aplicación
-            super.onBackPressed();
-        }
+        super.onBackPressed();
+        finish(); // Cierra la actividad actual
     }
 }

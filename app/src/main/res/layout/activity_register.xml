@@ -1,144 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:autofillHints=""
-    android:padding="16dp"
     android:background="@android:color/black"
+    android:padding="16dp"
     tools:context=".Register">
 
-    <!-- Icono de Flecha para retroceder -->
     <ImageView
         android:id="@+id/backArrow"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="?attr/homeAsUpIndicator"
-        android:contentDescription="@string/retroceder"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/retroceder"
+        android:src="?attr/homeAsUpIndicator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/logo_color" />
 
-    <!-- Título de Registro -->
     <TextView
         android:id="@+id/registroLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/registro"
-        android:textSize="44sp"
         android:textColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="44sp"
         app:layout_constraintStart_toEndOf="@id/backArrow"
-        android:layout_marginTop="32dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- EditText para el Nombre -->
     <EditText
         android:id="@+id/nombreEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/nombre"
-        android:textColorHint="@android:color/darker_gray"
         android:inputType="textPersonName"
         android:padding="16dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/registroLabel"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registroLabel" />
 
-    <!-- EditText para el Email -->
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/email"
-        android:textColorHint="@android:color/darker_gray"
         android:inputType="textEmailAddress"
         android:padding="16dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/nombreEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nombreEditText" />
 
-    <!-- EditText para la Contraseña -->
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/contrase_a"
-        android:textColorHint="@android:color/darker_gray"
         android:inputType="textPassword"
         android:padding="16dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/emailEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailEditText" />
 
-    <!-- EditText para Confirmar Contraseña -->
     <EditText
         android:id="@+id/confirmPasswordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/confirmar_contrase_a"
-        android:textColorHint="@android:color/darker_gray"
         android:inputType="textPassword"
         android:padding="16dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
 
-    <!-- EditText para la Dirección -->
     <EditText
         android:id="@+id/direccionEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/direcci_n"
-        android:textColorHint="@android:color/darker_gray"
         android:inputType="textPostalAddress"
         android:padding="16dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/confirmPasswordEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordEditText" />
 
-    <!-- EditText para el Teléfono -->
     <EditText
         android:id="@+id/telefonoEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:drawable/editbox_background"
         android:hint="@string/tel_fono"
-        android:textColorHint="@android:color/darker_gray"
         android:inputType="phone"
         android:padding="16dp"
-        android:background="@android:drawable/editbox_background"
-        app:layout_constraintTop_toBottomOf="@id/direccionEditText"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textColorHint="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direccionEditText" />
 
-    <!-- Checkbox para Aceptar Términos y Condiciones -->
     <CheckBox
         android:id="@+id/terminosCheckBox"
         android:layout_width="wrap_content"
@@ -151,19 +149,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/telefonoEditText" />
 
-    <!-- Botón de Registrarse -->
     <Button
         android:id="@+id/registrarseButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/logo_color"
         android:text="@string/registrarse"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/logo_color"
-        app:layout_constraintTop_toBottomOf="@id/terminosCheckBox"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/terminosCheckBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

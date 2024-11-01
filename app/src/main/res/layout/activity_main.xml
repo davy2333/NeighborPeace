@@ -98,26 +98,25 @@
         android:orientation="vertical"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd=" 16dp"
         app:layout_constraintTop_toBottomOf="@+id/subtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </LinearLayout>
 
-    <!-- Nuevo Botón para Chat -->
-    <Button
+    <!-- Nuevo ImageButton para Chat -->
+
+    <ImageButton
         android:id="@+id/chatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@android:color/holo_blue_light"
-        android:text="Ir al Chat"
-        android:textColor="@android:color/white"
+        android:src="@android:drawable/sym_action_chat"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/problemList" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

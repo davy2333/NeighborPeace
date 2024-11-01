@@ -14,4 +14,5 @@
     <color name="colorBottomNavBackground">#000000</color> <!-- Fondo negro -->
     <color name="colorBottomNavIcon">#FFFFFF</color> <!-- Blanco para íconos -->
     <color name="colorBottomNavText">#FFFFFF</color> <!-- Blanco para texto -->
+    <color name="primary">#2196F3</color>
 </resources>
