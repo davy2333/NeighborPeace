@@ -19,20 +19,20 @@
         android:layout_height="wrap_content"
         android:titleCondensed="Agregar"/>
 
-    <!-- Cuarto Botón: HISTORIAL -->
+    <!-- Tercer Botón: HISTORIAL -->
     <item
         android:id="@+id/navigation_history"
         android:icon="@drawable/ic_history"
-        android:title="@string/historial"
+        android:title="Historial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:titleCondensed="Historial"/>
 
-    <!-- Quinto Botón: NOTIFICACIONES -->
+    <!-- Cuarto Botón: NOTIFICACIONES -->
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications"
-        android:title="@string/notificaciones"
+        android:title="Notificaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:titleCondensed="Notificaciones"/>

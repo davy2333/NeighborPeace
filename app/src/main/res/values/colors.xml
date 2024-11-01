@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores básicos -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="logo_color">#5A1C84</color>
+
+    <!-- Colores del tema de la aplicación -->
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <!-- Agregar nuevos colores para tu BottomNavigationView -->
-    <color name="colorBottomNavBackground">#000000</color> <!-- Color de fondo negro -->
-    <color name="colorBottomNavIcon">#FFFFFF</color> <!-- Color blanco para íconos -->
-    <color name="colorBottomNavText">#FFFFFF</color> <!-- Color blanco para texto -->
+    <!-- Colores para BottomNavigationView -->
+    <color name="colorBottomNavBackground">#000000</color> <!-- Fondo negro -->
+    <color name="colorBottomNavIcon">#FFFFFF</color> <!-- Blanco para íconos -->
+    <color name="colorBottomNavText">#FFFFFF</color> <!-- Blanco para texto -->
 </resources>
-

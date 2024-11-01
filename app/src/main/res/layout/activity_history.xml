@@ -11,37 +11,38 @@
     tools:context=".History">
 
     <!-- Título del Historial -->
-<TextView
-    android:id="@+id/historyTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/historial"
-    android:textColor="@android:color/white"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    android:fontFamily="sans-serif-medium"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="32dp"
-    tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/historyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/historial"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        tools:ignore="MissingConstraints" />
 
     <!-- Lista de Historial -->
-<ListView
-    android:id="@+id/historyListView"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    app:layout_constraintTop_toBottomOf="@id/historyTitle"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-    android:divider="@android:color/darker_gray"
-    android:dividerHeight="1dp"
-    android:listSelector="@android:color/holo_blue_light"
-    tools:listitem="@layout/history_item" />
+    <ListView
+        android:id="@+id/historyListView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/historyTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        android:listSelector="@android:color/holo_blue_light"
+        tools:listitem="@layout/history_item" />
 
+    <!-- Menú de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
@@ -55,4 +56,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:labelVisibilityMode="labeled" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

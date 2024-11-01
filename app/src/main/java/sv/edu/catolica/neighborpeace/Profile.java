@@ -1,12 +1,14 @@
-package sv.edu.catolica.neighborpeace;import android.content.Intent;
+package sv.edu.catolica.neighborpeace;
+
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import sv.edu.catolica.neighborpeace.Edit_profile;
 
 public class Profile extends AppCompatActivity {
 
@@ -21,7 +23,6 @@ public class Profile extends AppCompatActivity {
 
         // Inicializar vistas
         backArrow = findViewById(R.id.backArrow);
-
         titleProfile = findViewById(R.id.titleProfile);
         profileImage = findViewById(R.id.profileImage);
         emailValue = findViewById(R.id.emailValue);
@@ -50,7 +51,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Lógica para abrir la pantalla de edición de perfil
-                    Intent intent = new Intent(Profile.this, Edit_profile.class);
+                Intent intent = new Intent(Profile.this, Edit_profile.class);
                 startActivity(intent);
             }
         });
@@ -59,9 +60,25 @@ public class Profile extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lógica para cerrar sesión (puedes agregar la lógica necesaria aquí)
-                finish();  // Termina la actividad actual
+                showLogoutConfirmationDialog();
             }
         });
+    }
+
+    private void showLogoutConfirmationDialog() {
+        // Crear un diálogo de confirmación para cerrar sesión
+        new AlertDialog.Builder(Profile.this)
+                .setTitle("Confirmar Cierre de Sesión")
+                .setMessage("¿Estás seguro de que deseas cerrar sesión?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Si el usuario confirma, navegar a la actividad de Login
+                        Intent intent = new Intent(Profile.this, login.class); // Asegúrate de que Login.class exista
+                        startActivity(intent);
+                        finish(); // Cierra la actividad actual
+                    }
+                })
+                .setNegativeButton("No", null) // Si el usuario elige "No", simplemente cierra el diálogo
+                .show();
     }
 }

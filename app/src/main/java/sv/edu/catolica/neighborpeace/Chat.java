@@ -23,7 +23,7 @@ public class Chat extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat); // Asegúrate que este nombre coincide con tu XML
+        setContentView(R.layout.activity_chat); // Asegúrate de que este nombre coincide con tu XML
 
         // Inicializar vistas
         messageContainer = findViewById(R.id.message_container);
@@ -90,6 +90,6 @@ public class Chat extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        irAPantallaPrincipal(); // Regresar a la pantalla principal
+        irAPantallaPrincipal(); // Regresar a la pantalla principal sin necesidad de llamar a super
     }
 }

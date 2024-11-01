@@ -1,14 +1,17 @@
 package sv.edu.catolica.neighborpeace;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;  // Importación del botón
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,62 +24,101 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  // Asegúrate de que esté cargando el layout correcto
-        // Aquí está el ID 'main' del ConstraintLayout
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main); // Asegúrate de que este archivo XML exista.
+
+        // Manejo de insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        // Configuración del BottomNavigationView
+        setupBottomNavigationView();
 
-        // Listener para manejar los clics en los ítems del menú
+        // Configuración del botón de perfil
+        setupProfileButton();
+
+        // Configuración del botón de Chat
+        setupChatButton();
+    }
+
+    // Método para configurar el BottomNavigationView
+    private void setupBottomNavigationView() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation); // Verifica que este ID esté en tu XML.
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
+                // Manejo de la selección de ítems
                 if (id == R.id.navigation_home) {
-                    Toast toast1 = Toast.makeText(getApplicationContext(),
-                            "Estás en la pantalla principal", Toast.LENGTH_SHORT);
-                    toast1.show();
-
+                    if (!(MainActivity.this instanceof MainActivity)) {
+                        Intent pantalla = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(pantalla);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Ya estás en la pantalla principal", Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
                 } else if (id == R.id.navigation_add_problem) {
                     Intent pantalla = new Intent(MainActivity.this, Problems.class);
                     startActivity(pantalla);
+                    return true;
                 } else if (id == R.id.navigation_history) {
                     Intent pantalla = new Intent(MainActivity.this, History.class);
                     startActivity(pantalla);
+                    return true;
                 } else if (id == R.id.navigation_notifications) {
                     Intent pantalla = new Intent(MainActivity.this, Notificaciones.class);
                     startActivity(pantalla);
+                    return true;
                 }
 
-                return true;
+                return false;
             }
         });
+    }
 
-        // Configuración del botón de perfil
-        ImageButton btnPerfil = findViewById(R.id.profileButton);
-
+    // Método para configurar el botón de perfil
+    private void setupProfileButton() {
+        ImageButton btnPerfil = findViewById(R.id.profileButton); // Verifica que este ID esté en tu XML.
         btnPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent objVentana = new Intent(MainActivity.this, Profile.class);
-                startActivity(objVentana);
+                startActivity(new Intent(MainActivity.this, Profile.class)); // Asegúrate de que Profile.class esté definida.
             }
         });
+    }
 
-        // Configuración del botón de Chat
-        Button chatButton = findViewById(R.id.chatButton);  // Encuentra el botón de chat por su ID
+    // Método para configurar el botón de Chat
+    private void setupChatButton() {
+        Button chatButton = findViewById(R.id.chatButton); // Verifica que este ID esté en tu XML.
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Inicia la actividad de Chat cuando se presiona el botón
-                Intent intent = new Intent(MainActivity.this, Chat.class); // Asegúrate de que Chat.class exista
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, Chat.class)); // Asegúrate de que Chat.class esté definida.
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isTaskRoot()) {
+            // Confirmar salida cuando el usuario está en Home y presiona atrás
+            new AlertDialog.Builder(this)
+                    .setTitle("Confirmar Salida")
+                    .setMessage("¿Estás seguro de que quieres salir?")
+                    .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish(); // Cierra la aplicación
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        } else {
+            // Retroceso a la actividad anterior sin cerrar la aplicación
+            super.onBackPressed();
+        }
     }
 }

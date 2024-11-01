@@ -1,9 +1,14 @@
 <resources>
+    <!-- Nombre de la Aplicación -->
     <string name="app_name">NeighborPeace</string>
+
+    <!-- Cadenas para elementos de menú y navegación -->
     <string name="agregar_problema">Agregar Problema</string>
     <string name="historial">Historial</string>
     <string name="home">Home</string>
     <string name="notificaciones">Notificaciones</string>
+
+    <!-- Cadenas generales de UI -->
     <string name="retroceder">Retroceder</string>
     <string name="confirmar_contrase_a">Confirmar Contraseña</string>
     <string name="direcci_n">Dirección</string>
@@ -14,12 +19,16 @@
     <string name="registro">Registro</string>
     <string name="tel_fono">Teléfono</string>
     <string name="acepto_los_t_rminos_y_condiciones">Acepto los términos y condiciones</string>
+
+    <!-- Elementos de Pantalla de Inicio -->
     <string name="home2">HOME</string>
     <string name="logotipo_de_neighborpeace">Logotipo de NeighborPeace</string>
     <string name="imagen_de_perfil">Imagen de perfil</string>
-    <string name="buscar_en_neighbourpeace">Buscar en NeighbourPeace</string>
+    <string name="buscar_en_neighbourpeace">Buscar en NeighborPeace</string>
     <string name="problemas_pendientes_de_resolver">Problemas pendientes de resolver</string>
     <string name="nombre_del_usuario">NOMBRE DEL USUARIO</string>
+
+    <!-- Cadenas para pantalla de Login -->
     <string name="email2">Email</string>
     <string name="has_olvidado_tu_contrase_a">¿Has olvidado tu contraseña?</string>
     <string name="iniciar_sesi_n">Iniciar Sesión</string>
@@ -27,8 +36,22 @@
     <string name="contrase_a2">Contraseña</string>
     <string name="registrarse2">Registrarse</string>
     <string name="logoapp">logoApp</string>
+
+    <!-- Información del equipo -->
     <string name="from_n_equipodedesarrollo">FROM\n@EQUIPODEDESARROLLO</string>
+
+    <!-- Pantalla de perfil y edición de perfil -->
     <string name="cambiar_imagen">Cambiar Imagen</string>
     <string name="editar_perfil">Editar Perfil</string>
     <string name="_7089_5467">7089 5467</string>
+
+    <!-- Cadenas para la pantalla de recuperación de contraseña -->
+    <string name="recuperar_contrase_a">Recuperar Contraseña</string>
+    <string name="enviar_correo_de_recuperaci_n">Enviar Correo de Recuperación</string>
+    <string name="volver_al_login">Volver al Login</string>
+    <string name="error_campo_requerido">Este campo es requerido</string>
+    <string name="error_email_invalido">Por favor ingrese un email válido</string>
+
+    <!-- Otros elementos -->
+    <string name="logo_app">Logo de la aplicación</string>
 </resources>
