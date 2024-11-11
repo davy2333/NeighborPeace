@@ -1,51 +1,72 @@
 package sv.edu.catolica.neighborpeace;
 
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+    private static final String PROBLEMS_URL = "http://192.168.67.223:80/WebServicesphp/getProblems.php";
 
     private ImageButton chatButton;
     private ImageButton profileButton;
     private TextView userNameTextView;
     private LinearLayout problemList;
+    private EditText searchEditText;
+    private AsyncHttpClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar vistas
+        initializeViews();
+        setupListeners();
+        setupBottomNavigation();
+
+        // Obtener nombre de usuario de SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String userName = prefs.getString("userName", "Usuario");
+        userNameTextView.setText(userName);
+
+        // Inicializar cliente HTTP y cargar problemas
+        client = new AsyncHttpClient();
+        loadProblems();
+    }
+
+    private void initializeViews() {
         chatButton = findViewById(R.id.chatButton);
         profileButton = findViewById(R.id.profileButton);
         userNameTextView = findViewById(R.id.userNameTextView);
         problemList = findViewById(R.id.problemList);
+        searchEditText = findViewById(R.id.searchEditText);
+    }
 
-        // Configurar el botón de chat
+    private void setupListeners() {
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,17 +75,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar la actividad de perfil
                 Intent profileIntent = new Intent(MainActivity.this, Profile.class);
                 startActivity(profileIntent);
             }
         });
 
-        // Configurar el menú de navegación inferior
+        // Opcional: Implementar búsqueda en tiempo real
+        /*
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Implementar lógica de búsqueda aquí
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+        */
+    }
+
+    private void setupBottomNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -72,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.navigation_home) {
-                    // Ya estamos en la pantalla principal
                     return true;
                 } else if (id == R.id.navigation_add_problem) {
                     Intent addProblemIntent = new Intent(MainActivity.this, Problems.class);
@@ -91,86 +126,133 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
-        // Llamar al método que obtiene los problemas de la base de datos
-        new GetProblemsTask().execute("http://192.168.56.1:80/WebServicesphp/getProblems.php");
+    private void loadProblems() {
+        client.get(PROBLEMS_URL, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if (response.has("exito")) {
+                        JSONArray problemas = response.getJSONArray("problemas");
+                        displayProblems(problemas);
+                    } else {
+                        Toast.makeText(MainActivity.this,
+                                "Error al cargar los problemas",
+                                Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "Error en la respuesta: " + response.toString());
+                    }
+                } catch (JSONException e) {
+                    Log.e(TAG, "Error parsing JSON: " + e.getMessage());
+                    Toast.makeText(MainActivity.this,
+                            "Error al procesar los datos",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(TAG, "Error de conexión: " + throwable.getMessage());
+                Toast.makeText(MainActivity.this,
+                        "Error de conexión al servidor",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.e(TAG, "Error: " + throwable.getMessage());
+                Toast.makeText(MainActivity.this,
+                        "Error al obtener los datos",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void displayProblems(JSONArray problemas) throws JSONException {
+        problemList.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(this);
+
+        for (int i = 0; i < problemas.length(); i++) {
+            JSONObject problema = problemas.getJSONObject(i);
+
+            View problemView = inflater.inflate(R.layout.problem_item, problemList, false);
+
+            TextView titleText = problemView.findViewById(R.id.problemTitle);
+            TextView descriptionText = problemView.findViewById(R.id.problemDescription);
+            TextView locationText = problemView.findViewById(R.id.problemLocation);
+            TextView statusText = problemView.findViewById(R.id.problemStatus);
+            TextView dateText = problemView.findViewById(R.id.problemDate);
+            TextView userText = problemView.findViewById(R.id.problemUser);
+
+            // Establecer los valores
+            titleText.setText(problema.getString("titulo"));
+            descriptionText.setText(problema.getString("descripcion"));
+            locationText.setText("📍 " + problema.getString("ubicacion"));
+
+            // Configurar el estado con color según el valor
+            String estado = problema.getString("estado");
+            statusText.setText(estado);
+            switch (estado) {
+                case "REPORTADO":
+                    statusText.setBackgroundResource(R.drawable.status_background_reported);
+                    break;
+                case "EN PROCESO":
+                    statusText.setBackgroundResource(R.drawable.status_background_in_progress);
+                    break;
+                case "FINALIZADO":
+                    statusText.setBackgroundResource(R.drawable.status_background_completed);
+                    break;
+            }
+
+            dateText.setText(problema.getString("fecha_formateada"));
+            userText.setText("Reportado por: " + problema.getString("nombre_usuario"));
+
+            // Configurar el onClick para ver detalles
+            final int problemId = problema.getInt("id");
+            problemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        Intent detailIntent = new Intent(MainActivity.this, DetalleProblema.class);
+                        detailIntent.putExtra("problem_id", problemId);
+                        detailIntent.putExtra("problem_title", problema.getString("titulo"));
+                        detailIntent.putExtra("problem_description", problema.getString("descripcion"));
+                        detailIntent.putExtra("problem_location", problema.getString("ubicacion"));
+                        detailIntent.putExtra("problem_status", problema.getString("estado"));
+                        startActivity(detailIntent);
+                    } catch (JSONException e) {
+                        Log.e(TAG, "Error al abrir detalles: " + e.getMessage());
+                        Toast.makeText(MainActivity.this,
+                                "Error al abrir los detalles",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            problemList.addView(problemView);
+
+            // Agregar un divisor si no es el último elemento
+            if (i < problemas.length() - 1) {
+                View divider = new View(MainActivity.this);
+                divider.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        getResources().getDimensionPixelSize(R.dimen.divider_height)));
+                divider.setBackgroundColor(getResources().getColor(R.color.divider_color));
+                problemList.addView(divider);
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Recargar problemas cuando se vuelve a la actividad
+        loadProblems();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish(); // Cierra la actividad actual
-    }
-
-    private class GetProblemsTask extends AsyncTask<String, Void, JSONArray> {
-        @Override
-        protected JSONArray doInBackground(String... params) {
-            try {
-                URL url = new URL(params[0]);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-
-                return new JSONArray(response.toString());
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(JSONArray problems) {
-            if (problems != null) {
-                // Limpiar la lista
-                problemList.removeAllViews();
-
-                // Agregar los problemas a la lista
-                for (int i = 0; i < problems.length(); i++) {
-                    try {
-                        JSONObject problem = problems.getJSONObject(i);
-                        String titulo = problem.getString("titulo");
-                        String descripcion = problem.getString("descripcion");
-                        String ubicacion = problem.getString("ubicacion");
-                        String estado = problem.getString("estado");
-
-                        // Crear una nueva vista para cada problema y agregarla a la lista
-                        View problemView = LayoutInflater.from(MainActivity.this).inflate(R.layout.problem_item, problemList, false);
-                        TextView tituloTextView = problemView.findViewById(R.id.tituloTextView);
-                        TextView descripcionTextView = problemView.findViewById(R.id.descripcionTextView);
-                        TextView ubicacionTextView = problemView.findViewById(R.id.ubicacionTextView);
-                        TextView estadoTextView = problemView.findViewById(R.id.estadoTextView);
-
-                        tituloTextView.setText(titulo);
-                        descripcionTextView.setText(descripcion);
-                        ubicacionTextView.setText(ubicacion);
-                        estadoTextView.setText(estado);
-
-                        // Establecer el color de fondo según el estado del problema
-                        switch (estado) {
-                            case "REPORTADO":
-                                problemView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.amarillo));
-                                break;
-                            case "EN PROCESO":
-                                problemView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.naranja));
-                                break;
-                            case "FINALIZADO":
-                                problemView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.verde));
-                                break;
-                        }
-
-                        problemList.addView(problemView);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
+        finish();
     }
 }
