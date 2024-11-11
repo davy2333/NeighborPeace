@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="sv.edu.catolica.neighborpeace">
-
     <!-- Permisos necesarios -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -20,34 +19,58 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-
-        <!-- Splash Screen Activity -->
+        <activity
+            android:name=".DetalleProblema"
+            android:exported="false" />
+        <activity
+            android:name=".AddRol"
+            android:exported="false" />
+        <activity
+            android:name=".ChatAdmin"
+            android:exported="false" /> <!-- Splash Screen Activity -->
         <activity
             android:name=".IntroSplashScreen"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Pantallas de autenticación -->
-        <activity android:name=".login" android:exported="true" />
-        <activity android:name=".Register" android:exported="true" />
-        <activity android:name=".ForgotPassword" android:exported="true" />
-
-        <!-- Pantallas principales de la aplicación -->
-        <activity android:name=".MainActivity" android:exported="true" />
-        <activity android:name=".Profile" android:exported="true" />
-        <activity android:name=".Edit_profile" android:exported="true" />
-
-        <!-- Funcionalidades adicionales -->
-        <activity android:name=".Chat" android:exported="true" />
-        <activity android:name=".Encuestas" android:exported="true" />
-        <activity android:name=".History" android:exported="true" />
-        <activity android:name=".Notificaciones" android:exported="true" />
-        <activity android:name=".Problems" android:exported="true" />
-
+        </activity> <!-- Pantallas de autenticación -->
+        <activity
+            android:name=".login"
+            android:exported="true" />
+        <activity
+            android:name=".Register"
+            android:exported="true" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="true" /> <!-- Pantallas principales de la aplicación -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".Edit_profile"
+            android:exported="true" /> <!-- Funcionalidades adicionales -->
+        <activity
+            android:name=".Chat"
+            android:exported="true" />
+        <activity
+            android:name=".Encuestas"
+            android:exported="true" />
+        <activity
+            android:name=".History"
+            android:exported="true" />
+        <activity
+            android:name=".Notificaciones"
+            android:exported="true" />
+        <activity
+            android:name=".Problems"
+            android:exported="true" />
     </application>
+
 </manifest>
