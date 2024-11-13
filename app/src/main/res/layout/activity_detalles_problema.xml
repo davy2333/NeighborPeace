@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grisPantallas">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grisPantallas"
+        android:padding="16dp">
+
+        <!-- Botón de retroceso -->
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/retroceder"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <!-- Título del problema -->
+        <TextView
+            android:id="@+id/problemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/backArrow"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Imagen del problema -->
+        <ImageView
+            android:id="@+id/problemImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/problemTitle"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop" />
+
+        <!-- Estado del problema -->
+        <TextView
+            android:id="@+id/problemStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/problemImage"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <!-- Sección de Información del Problema -->
+        <LinearLayout
+            android:id="@+id/problemInfoSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/problemStatus"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/informaci_n_del_problema"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/problemDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#B0B0B0" />
+
+            <TextView
+                android:id="@+id/problemLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#B0B0B0" />
+
+            <TextView
+                android:id="@+id/problemDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#B0B0B0" />
+        </LinearLayout>
+
+        <!-- Sección del Reportador -->
+        <LinearLayout
+            android:id="@+id/reporterSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/problemInfoSection"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/reportado_por"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/reporterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#B0B0B0" />
+
+            <TextView
+                android:id="@+id/reporterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#B0B0B0" />
+        </LinearLayout>
+
+        <!-- Sección del Ingeniero Asignado -->
+        <LinearLayout
+            android:id="@+id/engineerSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reporterSection"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/ingeniero_asignado"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/engineerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pendiente_de_asignar"
+                android:textColor="#B0B0B0" />
+
+            <TextView
+                android:id="@+id/engineerEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#B0B0B0" />
+        </LinearLayout>
+
+        <!-- Sección del Supervisor -->
+        <LinearLayout
+            android:id="@+id/supervisorSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/engineerSection"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/supervisor_asignado"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/supervisorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pendiente_de_asignar_TV"
+                android:textColor="#B0B0B0" />
+
+            <TextView
+                android:id="@+id/supervisorEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#B0B0B0" />
+        </LinearLayout>
+
+        <!-- Botón de chat -->
+        <ImageButton
+            android:id="@+id/chatButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_below="@id/supervisorSection"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/logo_color"
+            android:contentDescription="@string/abrir_chat"
+            android:src="@android:drawable/stat_notify_chat" />
+
+    </RelativeLayout>
+</ScrollView>

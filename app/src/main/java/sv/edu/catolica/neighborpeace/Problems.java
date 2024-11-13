@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import android.app.ProgressDialog;
 
+import com.bumptech.glide.Glide;
 import com.loopj.android.http.*;
 import org.json.*;
 import cz.msebera.android.httpclient.Header;
@@ -38,13 +39,15 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.ByteArrayOutputStream;
+
 public class Problems extends AppCompatActivity {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_PICK = 2;
     private static final int REQUEST_CAMERA_PERMISSION = 3;
 
-    private static final String BASE_URL = "http://192.168.67.223:80/WebServicesphp/Problema.php";
+    private static final String BASE_URL = "http://172.20.10.5:80/WebServicesphp/Problema.php";
     private AsyncHttpClient client;
 
     private ImageView backArrow;
@@ -137,6 +140,7 @@ public class Problems extends AppCompatActivity {
             }
         });
     }
+
     private boolean validateInputs() {
         String title = titleEdit.getText().toString().trim();
         String description = descriptionEdit.getText().toString().trim();
@@ -166,6 +170,10 @@ public class Problems extends AppCompatActivity {
     }
 
     private void submitProblem() {
+        if (!validateInputs()) {
+            return;
+        }
+
         // Crear el objeto JSON con los datos del problema
         JSONObject params = new JSONObject();
         try {
@@ -174,13 +182,18 @@ public class Problems extends AppCompatActivity {
             params.put("ubicacion", locationEdit.getText().toString().trim());
             params.put("idUsuario", userId);
 
+            // Agregar la imagen si existe
+            if (base64Image != null && !base64Image.isEmpty()) {
+                params.put("imagen", base64Image);
+            }
+
             // Mostrar diálogo de carga
             ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Enviando problema...");
             progressDialog.show();
 
             // Crear StringEntity para el envío
-            StringEntity entity = new StringEntity(params.toString());
+            StringEntity entity = new StringEntity(params.toString(), "UTF-8");
 
             // Configurar el cliente para enviar JSON
             client.addHeader("Content-Type", "application/json");
@@ -193,7 +206,6 @@ public class Problems extends AppCompatActivity {
                     try {
                         if (response.has("success") && response.getBoolean("success")) {
                             Toast.makeText(Problems.this, "Problema creado exitosamente", Toast.LENGTH_LONG).show();
-                            // Redirigir a MainActivity
                             Intent intent = new Intent(Problems.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -276,13 +288,37 @@ public class Problems extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            selectedPhotoImageView.setImageBitmap(imageBitmap);
-        } else if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
-            Uri selectedImageUri = data.getData();
-            selectedPhotoImageView.setImageURI(selectedImageUri);
+        if (resultCode == RESULT_OK) {
+            try {
+                Bitmap bitmap = null;
+
+                if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                    Bundle extras = data.getExtras();
+                    bitmap = (Bitmap) extras.get("data");
+                } else if (requestCode == REQUEST_IMAGE_PICK) {
+                    Uri selectedImageUri = data.getData();
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                }
+
+                if (bitmap != null) {
+                    // Redimensionar la imagen para reducir el tamaño
+                    bitmap = Bitmap.createScaledBitmap(bitmap, 800, 800 * bitmap.getHeight() / bitmap.getWidth(), true);
+
+                    // Mostrar la imagen usando Glide
+                    Glide.with(this)
+                            .load(bitmap)
+                            .centerCrop()
+                            .into(selectedPhotoImageView);
+
+                    // Convertir a Base64
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
+                    byte[] byteArray = byteArrayOutputStream.toByteArray();
+                    base64Image = "data:image/jpeg;base64," + Base64.encodeToString(byteArray, Base64.DEFAULT);
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, "Error al procesar la imagen: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

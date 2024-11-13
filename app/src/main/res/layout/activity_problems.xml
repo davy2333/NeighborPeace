@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/problemsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Problems"
-    android:background="@android:color/black">
+    android:background="@color/grisPantallas"
+    tools:context=".Problems">
 
     <!-- Icono de Flecha para retroceder -->
     <ImageView
         android:id="@+id/backArrowProblems"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/retroceder"
         android:src="?attr/homeAsUpIndicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
         app:tint="@color/logo_color" />
 
     <!-- Título de la Pantalla -->
@@ -27,27 +26,27 @@
         android:id="@+id/titleAddProblem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reportar situación a la comunidad"
+        android:layout_marginTop="16dp"
+        android:text="@string/reportar_situaci_n_a_la_comunidad"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backArrowProblems"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/backArrowProblems" />
 
     <!-- ScrollView para la información del problema -->
     <ScrollView
         android:id="@+id/scrollViewProblems"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/titleAddProblem"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleAddProblem">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,17 +58,18 @@
                 android:id="@+id/titleLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Título"
+                android:layout_marginTop="8dp"
+                android:importantForAutofill="no"
+                android:text="@string/t_tulo"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:layout_marginTop="8dp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/titleEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_background"
-                android:hint="Ingresa un título para el problema"
+                android:hint="@string/ingresa_un_t_tulo_para_el_problema"
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:textColor="#A9A9A9"
@@ -80,17 +80,17 @@
                 android:id="@+id/descriptionLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Descripción"
+                android:layout_marginTop="16dp"
+                android:text="@string/descripci_n"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/descriptionEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_background"
-                android:hint="Agrega más detalles sobre el problema"
+                android:hint="@string/agrega_m_s_detalles_sobre_el_problema"
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:textColor="#A9A9A9"
@@ -101,17 +101,17 @@
                 android:id="@+id/locationLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ubicación"
+                android:layout_marginTop="16dp"
+                android:text="@string/ubicaci_n_problemas"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp" />
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/locationEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_background"
-                android:hint="Ubicación del problema"
+                android:hint="@string/ubicaci_n_del_problema"
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:textColor="#A9A9A9"
@@ -121,8 +121,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
                 <!-- Botón para agregar ícono -->
                 <Button
@@ -130,8 +130,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Agregar ícono"
                     android:backgroundTint="@color/logo_color"
+                    android:text="@string/agregar_cono"
                     android:textColor="@android:color/white" />
 
                 <!-- Espacio entre los botones -->
@@ -145,8 +145,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Agregar Foto"
                     android:backgroundTint="@color/logo_color"
+                    android:text="@string/agregar_foto"
                     android:textColor="@android:color/white" />
             </LinearLayout>
 
@@ -154,13 +154,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Foto seleccionada"
+                    android:text="@string/foto_seleccionada"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
 
@@ -180,8 +180,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Publicar Problema"
                 android:backgroundTint="@color/logo_color"
+                android:text="@string/publicar_problema"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
@@ -193,14 +193,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/black"
+        android:background="@color/grisPantallas"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
-        app:menu="@menu/bottom_navigation_menu"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="0dp"
-        app:labelVisibilityMode="labeled" />
+        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
