@@ -28,7 +28,7 @@ public class login extends AppCompatActivity {
     private Button loginButton;
     private TextView registerTextView, forgotPasswordTextView;
     private static final String TAG = "LoginActivity";
-    private static final String LOGIN_URL = "http://192.168.67.223:80/WebServicesphp/login.php";
+    private static final String LOGIN_URL = "http://172.20.10.5:80/WebServicesphp/login.php";
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override

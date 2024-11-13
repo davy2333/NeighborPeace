@@ -7,6 +7,8 @@
     <color name="amarillo">#FFC107</color>
     <color name="naranja">#FF6F00</color>
     <color name="verde">#3BFF2D</color>
+    <color name="grisPantallas">#161616</color>
+    <color name="Morado">#5A1C84</color>
 
     <!-- Colores del tema de la aplicación -->
     <color name="colorPrimary">#6200EE</color>
@@ -20,6 +22,13 @@
     <color name="primary">#2196F3</color>
 
 
-        <color name="divider_color">#EEEEEE</color>
+
+    <color name="reportado">#FFA500</color> <!-- Naranja -->
+    <color name="en_progreso">#008000</color> <!-- Verde -->
+    <color name="finalizado">#0000FF</color> <!-- Azul -->
+    <color name="defaultColor">#000000</color> <!-- Negro como color por defecto -->
+    <!-- Otros colores -->
+
+    <color name="divider_color">#EEEEEE</color>
 
 </resources>

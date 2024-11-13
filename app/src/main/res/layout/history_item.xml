@@ -9,7 +9,7 @@
         android:id="@+id/itemTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Publicaste un problema"
+        android:text="@string/publicaste_un_problema"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"/>
@@ -18,7 +18,7 @@
         android:id="@+id/itemSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Descripción del item"
+        android:text="@string/descripci_n_del_item"
         android:textColor="@android:color/white"
         android:textSize="14sp"/>
 
