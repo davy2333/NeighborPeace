@@ -3,12 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/grisPantallas">
+=======
+    android:background="#121212">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:background="@color/grisPantallas"
+=======
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         android:padding="16dp">
 
         <!-- Botón de retroceso -->
@@ -26,8 +33,13 @@
             android:id="@+id/problemTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:layout_below="@id/backArrow"
             android:layout_centerHorizontal="true"
+=======
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/backArrow"
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
             android:layout_marginTop="16dp"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
@@ -40,7 +52,11 @@
             android:layout_height="200dp"
             android:layout_below="@id/problemTitle"
             android:layout_marginTop="16dp"
+<<<<<<< HEAD
             android:scaleType="centerCrop" />
+=======
+            android:scaleType="centerCrop"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
         <!-- Estado del problema -->
         <TextView
@@ -51,7 +67,11 @@
             android:layout_marginTop="16dp"
             android:padding="8dp"
             android:textColor="#FFFFFF"
+<<<<<<< HEAD
             android:textStyle="bold" />
+=======
+            android:textStyle="bold"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
         <!-- Sección de Información del Problema -->
         <LinearLayout
@@ -59,39 +79,68 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/problemStatus"
+<<<<<<< HEAD
             android:layout_marginTop="16dp"
             android:background="@drawable/section_background"
             android:orientation="vertical">
+=======
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginBottom="8dp"
                 android:text="@string/informaci_n_del_problema"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+=======
+                android:text="Información del Problema"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/problemDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginTop="8dp"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/problemLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginTop="8dp"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/problemDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginTop="8dp"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         </LinearLayout>
 
         <!-- Sección del Reportador -->
@@ -100,31 +149,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/problemInfoSection"
+<<<<<<< HEAD
             android:layout_marginTop="16dp"
             android:background="@drawable/section_background"
             android:orientation="vertical">
+=======
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginBottom="8dp"
                 android:text="@string/reportado_por"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+=======
+                android:text="Reportado por"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/reporterName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/reporterEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginTop="4dp"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="4dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         </LinearLayout>
 
         <!-- Sección del Ingeniero Asignado -->
@@ -133,32 +205,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/reporterSection"
+<<<<<<< HEAD
             android:layout_marginTop="16dp"
             android:background="@drawable/section_background"
             android:orientation="vertical">
+=======
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginBottom="8dp"
                 android:text="@string/ingeniero_asignado"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+=======
+                android:text="Ingeniero Asignado"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/engineerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="@string/pendiente_de_asignar"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:text="Pendiente de asignar"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/engineerEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginTop="4dp"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="4dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         </LinearLayout>
 
         <!-- Sección del Supervisor -->
@@ -167,32 +263,56 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/engineerSection"
+<<<<<<< HEAD
             android:layout_marginTop="16dp"
             android:background="@drawable/section_background"
             android:orientation="vertical">
+=======
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/section_background">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginBottom="8dp"
                 android:text="@string/supervisor_asignado"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+=======
+                android:text="Supervisor Asignado"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/supervisorName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="@string/pendiente_de_asignar_TV"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:text="Pendiente de asignar"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
             <TextView
                 android:id="@+id/supervisorEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginTop="4dp"
                 android:textColor="#B0B0B0" />
+=======
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="4dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         </LinearLayout>
 
         <!-- Botón de chat -->
@@ -200,6 +320,7 @@
             android:id="@+id/chatButton"
             android:layout_width="56dp"
             android:layout_height="56dp"
+<<<<<<< HEAD
             android:layout_below="@id/supervisorSection"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="16dp"
@@ -207,6 +328,15 @@
             android:backgroundTint="@color/logo_color"
             android:contentDescription="@string/abrir_chat"
             android:src="@android:drawable/stat_notify_chat" />
+=======
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/supervisorSection"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/logo_color"
+            android:src="@android:drawable/stat_notify_chat"
+            android:contentDescription="Abrir chat"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
     </RelativeLayout>
 </ScrollView>

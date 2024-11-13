@@ -2,7 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/grisPantallas"
+=======
+    android:background="#000000"
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
     android:padding="20dp">
 
     <!-- Título de la pantalla -->
@@ -10,31 +14,53 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="@string/asignar_rol_Title"
         android:textColor="@android:color/white"
         android:textSize="26sp"
         android:textStyle="bold" />
+=======
+        android:text="Asignar Rol"
+        android:textSize="26sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
     <!-- Contenedor del usuario seleccionado -->
     <LinearLayout
         android:id="@+id/userInfoContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_below="@id/titleText"
         android:layout_marginBottom="24dp"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
+=======
+        android:orientation="horizontal"
+        android:layout_below="@id/titleText"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="?android:attr/selectableItemBackground">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
         <!-- Nombre del usuario seleccionado -->
         <TextView
             android:id="@+id/selectedUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:text="@string/usuario_seleccionado_nombreusuario"
+=======
+            android:text="Usuario seleccionado: [NombreUsuario]"
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -45,18 +71,30 @@
         android:id="@+id/roleRadioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_below="@id/userInfoContainer"
         android:layout_marginBottom="24dp"
         android:background="?android:attr/selectableItemBackground"
         android:orientation="vertical"
         android:padding="16dp">
+=======
+        android:orientation="vertical"
+        android:layout_below="@id/userInfoContainer"
+        android:layout_marginBottom="24dp"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground">
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
         <RadioButton
             android:id="@+id/radioAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/naranja"
+<<<<<<< HEAD
             android:text="@string/administrador"
+=======
+            android:text="Administrador"
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp" />
 
@@ -65,7 +103,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/naranja"
+<<<<<<< HEAD
             android:text="@string/com_n"
+=======
+            android:text="Común"
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp" />
     </RadioGroup>
@@ -78,10 +120,17 @@
         android:layout_below="@id/roleRadioGroup"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
+<<<<<<< HEAD
         android:backgroundTint="@color/Morado"
         android:elevation="4dp"
         android:padding="12dp"
         android:text="@string/asignar_rol"
+=======
+        android:backgroundTint="@color/logo_color"
+        android:elevation="4dp"
+        android:padding="12dp"
+        android:text="Asignar Rol"
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold" />

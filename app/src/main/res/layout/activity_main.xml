@@ -40,6 +40,26 @@
         app:layout_constraintStart_toEndOf="@id/logoApp"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:hint="@string/nombre_del_usuario"
+        android:maxLines="1"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/profileButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/logoApp"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/profileButton"
         android:layout_width="50dp"
@@ -47,11 +67,19 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/circular_image_background"
+<<<<<<< HEAD
         android:contentDescription="@string/imagen_de_perfil"
         android:padding="0dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+=======
+        android:scaleType="centerCrop"
+        android:padding="0dp"
+        android:contentDescription="@string/imagen_de_perfil"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
     <EditText
         android:id="@+id/searchEditText"
@@ -80,8 +108,13 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchEditText" />
+=======
+        app:layout_constraintTop_toBottomOf="@id/searchEditText"
+        app:layout_constraintStart_toStartOf="parent" />
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
     <TextView
         android:id="@+id/subtitle"
@@ -92,6 +125,7 @@
         android:text="@string/problemas_pendientes_de_resolver"
         android:textColor="@android:color/white"
         android:textSize="16sp"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeTitle" />
 
@@ -109,6 +143,24 @@
         app:layout_constraintTop_toBottomOf="@id/subtitle"
         tools:ignore="SpeakableTextPresentCheck">
 
+=======
+        app:layout_constraintTop_toBottomOf="@id/homeTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/problemScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/chatButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subtitle">
+
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
         <LinearLayout
             android:id="@+id/problemList"
             android:layout_width="match_parent"

@@ -34,7 +34,11 @@ public class Profile extends AppCompatActivity {
     private TextView homeText, titleProfile, emailValue, nameValue, locationValue, phoneValue;
     private Button editProfileButton, logoutButton;
     private SharedPreferences sharedPreferences;
+<<<<<<< HEAD
     private static final String BASE_URL = "http://172.20.10.5:80/WebServicesphp/";
+=======
+    private static final String BASE_URL = "http://192.168.1.32:80/WebServicesphp/";
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

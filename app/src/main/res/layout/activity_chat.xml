@@ -31,19 +31,28 @@
     </LinearLayout>
 
     <!-- Área de mensajes -->
+<<<<<<< HEAD
 
     <!-- Área de entrada de mensaje -->
+=======
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messagesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/inputLayout"
         android:layout_below="@+id/chatHeader"
+<<<<<<< HEAD
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         android:background="@color/grisPantallas"
         android:padding="8dp" />
 
+=======
+        android:padding="8dp"/>
+
+    <!-- Área de entrada de mensaje -->
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
     <LinearLayout
         android:id="@+id/inputLayout"
         android:layout_width="match_parent"
@@ -57,6 +66,7 @@
             android:id="@+id/message_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@drawable/message_input_background"
@@ -66,14 +76,29 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#808080"
             tools:ignore="TextContrastCheck" />
+=======
+            android:layout_weight="1"
+            android:hint="Escribe un mensaje..."
+            android:textColorHint="#808080"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:background="@drawable/message_input_background"
+            android:layout_marginEnd="8dp"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
 
         <ImageButton
             android:id="@+id/send_button"
             android:layout_width="48dp"
             android:layout_height="48dp"
+<<<<<<< HEAD
             android:background="@color/Morado"
             android:src="@android:drawable/ic_menu_send"
             android:tint="#FFFFFF"
             tools:ignore="SpeakableTextPresentCheck,UseAppTint" />
+=======
+            android:src="@android:drawable/ic_menu_send"
+            android:background="@drawable/send_button_background"
+            android:tint="#FFFFFF"/>
+>>>>>>> 6714cfec887c9c4307209b6554c5fe16f58d1b42
     </LinearLayout>
 </RelativeLayout>
