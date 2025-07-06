@@ -37,8 +37,8 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private static final String PROBLEMS_URL = "http://172.20.10.5:80/WebServicesphp/getProblems.php";
-    private static final String BASE_URL = "http://172.20.10.5:80/WebServicesphp/";
+    private static final String PROBLEMS_URL = "http://192.168.0.12:80/WebServicesphp/getProblems.php";
+    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
 
     private ImageButton chatButton;
     private ImageButton profileButton;
@@ -58,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
         initializeViews();
         setupListeners();
         setupBottomNavigation();
+
+        // Añadir el OnClickListener para logoApp
+        ImageView logoApp = findViewById(R.id.logoApp);
+        logoApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aboutIntent = new Intent(MainActivity.this, About.class);
+                startActivity(aboutIntent);
+            }
+        });
 
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String userName = prefs.getString("userName", "Usuario");
@@ -243,10 +253,21 @@ public class MainActivity extends AppCompatActivity {
             TextView dateText = problemView.findViewById(R.id.problemDate);
             TextView userText = problemView.findViewById(R.id.problemUser);
             ImageView problemImage = problemView.findViewById(R.id.problemImage);
+            ImageView problemIcon = problemView.findViewById(R.id.problemIcon);
 
             titleText.setText(problema.getString("titulo"));
             descriptionText.setText(problema.getString("descripcion"));
             locationText.setText("📍 " + problema.getString("ubicacion"));
+
+            String iconName = problema.optString("icono", "default");
+            int iconResource = getIconResource(iconName);
+            if (iconResource != 0) {
+                problemIcon.setImageResource(iconResource);
+                problemIcon.setVisibility(View.VISIBLE);
+            } else {
+                problemIcon.setVisibility(View.GONE);
+            }
+
 
             String estado = problema.getString("estado");
             statusText.setText(estado);
@@ -304,14 +325,14 @@ public class MainActivity extends AppCompatActivity {
             problemList.addView(problemView);
 
             // Agregar divisor si no es el último elemento
-            if (i < problemas.length() - 1) {
+            /*if (i < problemas.length() - 1) {
                 View divider = new View(this);
                 divider.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         getResources().getDimensionPixelSize(R.dimen.divider_height)));
                 divider.setBackgroundColor(ContextCompat.getColor(this, R.color.divider_color));
                 problemList.addView(divider);
-            }
+            }*/
         }
     }
 
@@ -370,6 +391,19 @@ public class MainActivity extends AppCompatActivity {
 
         if (bottomNavigation != null) {
             bottomNavigation.setSelectedItemId(R.id.navigation_home);
+        }
+    }
+    private int getIconResource(String iconName) {
+        switch (iconName) {
+            case "ic_water":
+                return R.drawable.problemas_electricos;
+            case "ic_electricity":
+                return R.drawable.problemas_en_tuberias;
+            case "ic_road":
+                return R.drawable.problemas_viales;
+            case "default":
+            default:
+                return R.drawable.ic_default;
         }
     }
 }

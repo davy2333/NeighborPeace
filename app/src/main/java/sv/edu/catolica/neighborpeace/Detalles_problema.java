@@ -1,6 +1,7 @@
 package sv.edu.catolica.neighborpeace;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -21,7 +22,7 @@ import org.json.JSONObject;
 public class Detalles_problema extends AppCompatActivity {
 
     private static final String TAG = "Detalles_problema";
-    private static final String BASE_URL = "http://172.20.10.5:80/WebServicesphp/";
+    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
 
     private TextView problemTitle, problemDescription, problemLocation, problemStatus;
     private TextView problemDate, reporterName, reporterEmail;
@@ -47,6 +48,21 @@ public class Detalles_problema extends AppCompatActivity {
             finish();
         }
 
+        setupListeners();
+
+        // Inicializar las vistas
+        problemTitle = findViewById(R.id.problemTitle);
+        chatButton = findViewById(R.id.chatButton);
+        backArrow = findViewById(R.id.backArrow);
+
+        // Obtener datos del intent
+        problemId = getIntent().getIntExtra("problem_id", -1);
+        String title = getIntent().getStringExtra("problem_title");
+        if (title != null) {
+            problemTitle.setText(title);
+        }
+
+        // Configurar listeners
         setupListeners();
     }
 
@@ -171,9 +187,26 @@ public class Detalles_problema extends AppCompatActivity {
         backArrow.setOnClickListener(v -> finish());
 
         chatButton.setOnClickListener(v -> {
-            Intent chatIntent = new Intent(Detalles_problema.this, Chat.class);
+            SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            String userType = prefs.getString("userType", "");
+
+            Log.d("DetallesProblema", "UserType: " + userType);
+            Log.d("DetallesProblema", "ProblemId: " + problemId);
+            Log.d("DetallesProblema", "Title: " + (problemTitle != null ? problemTitle.getText() : "null"));
+
+            Intent chatIntent;
+            if ("ADMIN".equals(userType)) {
+                Log.d("DetallesProblema", "Iniciando ChatAdmin");
+                chatIntent = new Intent(Detalles_problema.this, ChatAdmin.class);
+            } else {
+                Log.d("DetallesProblema", "Iniciando Chat normal");
+                chatIntent = new Intent(Detalles_problema.this, Chat.class);
+            }
+
+            String titulo = problemTitle != null ? problemTitle.getText().toString() : "";
+
             chatIntent.putExtra("problem_id", problemId);
-            chatIntent.putExtra("problem_title", problemTitle.getText().toString());
+            chatIntent.putExtra("problem_title", titulo);
             startActivity(chatIntent);
         });
     }

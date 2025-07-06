@@ -28,7 +28,7 @@ public class login extends AppCompatActivity {
     private Button loginButton;
     private TextView registerTextView, forgotPasswordTextView;
     private static final String TAG = "LoginActivity";
-    private static final String LOGIN_URL = "http://172.20.10.5:80/WebServicesphp/login.php";
+    private static final String LOGIN_URL = "http://192.168.0.12:80/WebServicesphp/login.php";
     private boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -113,7 +113,7 @@ public class login extends AppCompatActivity {
                         String username = jsonResponse.getString("usuario");
                         String userType = jsonResponse.getString("tipo");
                         int userTypeId = jsonResponse.getInt("id_tipo");
-                        int userId = jsonResponse.getInt("id"); // Capturamos el ID del usuario
+                        int userId = jsonResponse.getInt("id");
 
                         // Guardar datos en SharedPreferences
                         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
@@ -124,16 +124,16 @@ public class login extends AppCompatActivity {
                         editor.putInt("userTypeId", userTypeId);
                         editor.apply();
 
-                        // Log para depuración
-                        Log.d(TAG, "Usuario ID guardado: " + userId);
-                        Log.d(TAG, "Nombre usuario: " + username);
-                        Log.d(TAG, "Tipo usuario: " + userType);
+                        // Log para depuración de tipo de usuario
+                        Log.d(TAG, "Tipo de usuario desde el servidor: " + userType);
 
-                        // Toast para verificar el ID (puedes quitarlo después)
-                        Toast.makeText(login.this, "Login exitoso. ID Usuario: " + userId, Toast.LENGTH_SHORT).show();
-
-                        // Crear intent y agregar extras
-                        Intent intent = new Intent(login.this, MainActivity.class);
+                        // Crear intent y redirigir según el tipo de usuario
+                        Intent intent;
+                        if ("ADMIN".equals(userType)) {
+                            intent = new Intent(login.this, MainActivityAdmin.class);
+                        } else {
+                            intent = new Intent(login.this, MainActivity.class);
+                        }
                         intent.putExtra("nombre_usuario", username);
                         intent.putExtra("tipo_usuario", userType);
                         intent.putExtra("id_tipo", userTypeId);
@@ -176,7 +176,6 @@ public class login extends AppCompatActivity {
         }
 
         this.doubleBackToExitPressedOnce = true;
-        // Muestra un mensaje al usuario
         new AlertDialog.Builder(this)
                 .setMessage("¿Quieres salir de la aplicación?")
                 .setCancelable(false)
@@ -184,7 +183,6 @@ public class login extends AppCompatActivity {
                 .setNegativeButton("No", (dialog, id) -> dialog.dismiss())
                 .show();
 
-        // Reinicia el contador después de 2 segundos
         new android.os.Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
     }
 }

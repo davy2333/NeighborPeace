@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/questionEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escribe tu pregunta"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#808080"
+        android:padding="12dp"
+        android:background="@drawable/edittext_background"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:id="@+id/optionsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Opciones por defecto -->
+        <include layout="@layout/item_poll_option_edit" />
+        <include layout="@layout/item_poll_option_edit" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addOptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Agregar opción"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/Morado"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

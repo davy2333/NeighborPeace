@@ -73,6 +73,7 @@
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:textColor="#A9A9A9"
+                android:textColorHint="@color/material_dynamic_neutral50"
                 android:textSize="16sp" />
 
             <!-- EditText para la Descripción -->
@@ -91,9 +92,11 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_background"
                 android:hint="@string/agrega_m_s_detalles_sobre_el_problema"
+                android:importantForAutofill="no"
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:textColor="#A9A9A9"
+                android:textColorHint="@color/material_dynamic_neutral40"
                 android:textSize="16sp" />
 
             <!-- Ubicación del Problema -->
@@ -102,6 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:importantForAutofill="no"
                 android:text="@string/ubicaci_n_problemas"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp" />
@@ -115,6 +119,7 @@
                 android:minHeight="48dp"
                 android:padding="10dp"
                 android:textColor="#A9A9A9"
+                android:textColorHint="@color/material_dynamic_neutral40"
                 android:textSize="16sp" />
 
             <!-- LinearLayout para botones de agregar ícono y foto -->
@@ -171,6 +176,13 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:scaleType="centerCrop" />
+                <ImageView
+                    android:id="@+id/problemIconPreview"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_default"/>
+
 
             </LinearLayout>
 

@@ -31,4 +31,6 @@
 
     <color name="divider_color">#EEEEEE</color>
 
+    <color name="poll_text_color">#333333</color>
+
 </resources>

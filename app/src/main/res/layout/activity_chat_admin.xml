@@ -2,67 +2,89 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisPantallas"> <!-- Fondo negro -->
+    android:background="@color/grisPantallas">
 
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/bot_n_de_retroceso"
-        android:src="@android:drawable/btn_dialog" /> <!-- Icono de retroceso -->
-
-    <ScrollView
-        android:id="@+id/message_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@id/back_button"
-        android:layout_weight="1"
-        android:paddingBottom="8dp">
-
-        <LinearLayout
-            android:id="@+id/message_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
+    <!-- Header del chat -->
     <LinearLayout
+        android:id="@+id/chatHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#1F1F1F">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <TextView
+            android:id="@+id/chatTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- RecyclerView para mensajes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messagesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/inputLayout"
+        android:layout_below="@+id/chatHeader"
+        android:padding="8dp" />
+
+    <!-- Área de entrada -->
+    <LinearLayout
+        android:id="@+id/inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:importantForAutofill="no"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:background="#1F1F1F">
+
+        <ImageButton
+            android:id="@+id/add_role_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_add"
+            android:tint="@color/Morado" />
 
         <EditText
             android:id="@+id/message_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/escribe_un_mensaje_input"
-            android:minHeight="48dp"
-            android:padding="10dp"
-            android:textColorHint="@android:color/darker_gray" /> <!-- Asegúrate de que el fondo sea adecuado -->
+            android:background="@drawable/message_input_background"
+            android:hint="Escribe un mensaje..."
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#808080" />
 
-        <Button
-            android:id="@+id/options_button"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@color/Morado"
-            android:padding="3dp"
-            android:text="@string/button_send_admin"
-            android:textColor="#4E342E" />
+        <ImageButton
+            android:id="@+id/poll_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:tint="@color/Morado" />
 
-        <Button
+        <ImageButton
             android:id="@+id/send_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/Morado"
-            android:padding="10dp"
-            android:text="@string/enviar_admin_button"
-            android:textColor="#4E342E" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_send"
+            android:tint="@color/Morado" />
     </LinearLayout>
 
 </RelativeLayout>

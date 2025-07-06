@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/history_background">
 
     <TextView
-        android:id="@+id/itemTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/historyTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/publicaste_un_problema"
         android:textColor="@android:color/white"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/itemSubtitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/historyDate"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/descripci_n_del_item"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"/>
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp" />
 
 </LinearLayout>

@@ -9,12 +9,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import android.app.ProgressDialog;
@@ -35,8 +35,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
@@ -47,16 +45,17 @@ public class Problems extends AppCompatActivity {
     private static final int REQUEST_IMAGE_PICK = 2;
     private static final int REQUEST_CAMERA_PERMISSION = 3;
 
-    private static final String BASE_URL = "http://172.20.10.5:80/WebServicesphp/Problema.php";
+    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/Problema.php";
     private AsyncHttpClient client;
 
     private ImageView backArrow;
     private ImageView selectedPhotoImageView;
-    private Button addPhotoButton;
+    private ImageView problemIconPreview;
+    private Button addPhotoButton, selectIconButton, submitProblemButton;
     private EditText titleEdit, descriptionEdit, locationEdit;
     private String base64Image;
+    private String selectedIcon = "default"; // Valor por defecto para el icono
     private int userId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,80 +63,112 @@ public class Problems extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_problems);
 
-        // Inicializar el cliente HTTP
-        client = new AsyncHttpClient();
-        client.setTimeout(30000); // 30 segundos de timeout
+        initializeViews();
+        setupClient();
+        setupListeners();
+        setupBottomNavigation();
+        getUserId();
+    }
 
-        // Manejo de insets
+    private void initializeViews() {
+        backArrow = findViewById(R.id.backArrowProblems);
+        selectedPhotoImageView = findViewById(R.id.selectedPhotoImageView);
+        problemIconPreview = findViewById(R.id.problemIconPreview);
+        addPhotoButton = findViewById(R.id.addPhotoButton);
+        selectIconButton = findViewById(R.id.addIconButton);
+        submitProblemButton = findViewById(R.id.submitProblemButton);
+        titleEdit = findViewById(R.id.titleEdit);
+        descriptionEdit = findViewById(R.id.descriptionEdit);
+        locationEdit = findViewById(R.id.locationEdit);
+
+        // Configurar insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.problemsLayout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
 
-        // Inicializar vistas
-        backArrow = findViewById(R.id.backArrowProblems);
-        selectedPhotoImageView = findViewById(R.id.selectedPhotoImageView);
-        addPhotoButton = findViewById(R.id.addPhotoButton);
-        titleEdit = findViewById(R.id.titleEdit);
-        descriptionEdit = findViewById(R.id.descriptionEdit);
-        locationEdit = findViewById(R.id.locationEdit);
+    private void setupClient() {
+        client = new AsyncHttpClient();
+        client.setTimeout(30000);
+    }
 
-        // Botón de retroceso
-        backArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Problems.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        // Obtener el ID del usuario de las preferencias compartidas
+    private void getUserId() {
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         userId = prefs.getInt("userId", -1);
+    }
 
-        // Botón para publicar el problema
-        Button submitProblemButton = findViewById(R.id.submitProblemButton);
-        submitProblemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (validateInputs()) {
-                    submitProblem();
-                }
+    private void setupListeners() {
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(Problems.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        submitProblemButton.setOnClickListener(v -> {
+            if (validateInputs()) {
+                submitProblem();
             }
         });
 
-        // Agregar foto
-        addPhotoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showImageSelectionDialog();
-            }
+        addPhotoButton.setOnClickListener(v -> showImageSelectionDialog());
+
+        selectIconButton.setOnClickListener(v -> showIconSelector());
+    }
+
+    private void showIconSelector() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.layout_icon_selector, null);
+        builder.setView(view);
+        builder.setTitle("Seleccionar ícono para el problema");
+
+        AlertDialog dialog = builder.create();
+
+        // Configurar listeners para cada icono
+        view.findViewById(R.id.problemas_electricos).setOnClickListener(v -> {
+            selectedIcon = "ic_water";
+            problemIconPreview.setImageResource(R.drawable.problemas_electricos);
+            dialog.dismiss();
         });
 
-        // Agregando el menú de navegación inferior
+        view.findViewById(R.id.problemas_tuberias).setOnClickListener(v -> {
+            selectedIcon = "ic_electricity";
+            problemIconPreview.setImageResource(R.drawable.problemas_en_tuberias);
+            dialog.dismiss();
+        });
+
+        view.findViewById(R.id.problemas_viales).setOnClickListener(v -> {
+            selectedIcon = "ic_road";
+            problemIconPreview.setImageResource(R.drawable.problemas_viales);
+            dialog.dismiss();
+        });
+
+        // Puedes agregar más iconos aquí siguiendo el mismo patrón
+
+        dialog.show();
+    }
+
+    private void setupBottomNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
 
-                if (id == R.id.navigation_home) {
-                    Intent pantalla = new Intent(Problems.this, MainActivity.class);
-                    startActivity(pantalla);
-                } else if (id == R.id.navigation_add_problem) {
-                    Toast.makeText(Problems.this, "Estás en la pantalla de Problemas", Toast.LENGTH_SHORT).show();
-                } else if (id == R.id.navigation_history) {
-                    Intent pantalla = new Intent(Problems.this, History.class);
-                    startActivity(pantalla);
-                } else if (id == R.id.navigation_notifications) {
-                    Intent pantalla = new Intent(Problems.this, Notificaciones.class);
-                    startActivity(pantalla);
-                }
-
+            if (id == R.id.navigation_home) {
+                startActivity(new Intent(Problems.this, MainActivity.class));
+                return true;
+            } else if (id == R.id.navigation_add_problem) {
+                Toast.makeText(Problems.this, "Estás en la pantalla de Problemas", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (id == R.id.navigation_history) {
+                startActivity(new Intent(Problems.this, History.class));
+                return true;
+            } else if (id == R.id.navigation_notifications) {
+                startActivity(new Intent(Problems.this, Notificaciones.class));
                 return true;
             }
+
+            return false;
         });
     }
 
@@ -170,35 +201,25 @@ public class Problems extends AppCompatActivity {
     }
 
     private void submitProblem() {
-        if (!validateInputs()) {
-            return;
-        }
-
-        // Crear el objeto JSON con los datos del problema
         JSONObject params = new JSONObject();
         try {
             params.put("titulo", titleEdit.getText().toString().trim());
             params.put("descripcion", descriptionEdit.getText().toString().trim());
             params.put("ubicacion", locationEdit.getText().toString().trim());
             params.put("idUsuario", userId);
+            params.put("icono", selectedIcon);
 
-            // Agregar la imagen si existe
             if (base64Image != null && !base64Image.isEmpty()) {
                 params.put("imagen", base64Image);
             }
 
-            // Mostrar diálogo de carga
             ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Enviando problema...");
             progressDialog.show();
 
-            // Crear StringEntity para el envío
             StringEntity entity = new StringEntity(params.toString(), "UTF-8");
-
-            // Configurar el cliente para enviar JSON
             client.addHeader("Content-Type", "application/json");
 
-            // Realizar la petición POST
             client.post(this, BASE_URL, entity, "application/json", new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -230,31 +251,12 @@ public class Problems extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(Problems.this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
-    }
-
     private void showImageSelectionDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Seleccionar imagen");
         builder.setMessage("¿Dónde deseas seleccionar la imagen?");
-        builder.setPositiveButton("Tomar foto", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                takePicture();
-            }
-        });
-        builder.setNegativeButton("Seleccionar de galería", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                pickImage();
-            }
-        });
+        builder.setPositiveButton("Tomar foto", (dialog, which) -> takePicture());
+        builder.setNegativeButton("Seleccionar de galería", (dialog, which) -> pickImage());
         builder.show();
     }
 
@@ -301,16 +303,13 @@ public class Problems extends AppCompatActivity {
                 }
 
                 if (bitmap != null) {
-                    // Redimensionar la imagen para reducir el tamaño
                     bitmap = Bitmap.createScaledBitmap(bitmap, 800, 800 * bitmap.getHeight() / bitmap.getWidth(), true);
 
-                    // Mostrar la imagen usando Glide
                     Glide.with(this)
                             .load(bitmap)
                             .centerCrop()
                             .into(selectedPhotoImageView);
 
-                    // Convertir a Base64
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 70, byteArrayOutputStream);
                     byte[] byteArray = byteArrayOutputStream.toByteArray();
@@ -320,5 +319,14 @@ public class Problems extends AppCompatActivity {
                 Toast.makeText(this, "Error al procesar la imagen: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Problems.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }

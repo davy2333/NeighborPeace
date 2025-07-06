@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="sv.edu.catolica.neighborpeace">
-
     <!-- Permisos necesarios -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -21,19 +20,22 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-
-        <!-- Splash Screen Activity -->
+        <activity
+            android:name=".MainActivityAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".About"
+            android:exported="false" /> <!-- Splash Screen Activity -->
         <activity
             android:name=".IntroSplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Pantallas de autenticación -->
+        </activity> <!-- Pantallas de autenticación -->
         <activity
             android:name=".login"
             android:exported="true" />
@@ -42,9 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".ForgotPassword"
-            android:exported="true" />
-
-        <!-- Pantallas principales de la aplicación -->
+            android:exported="true" /> <!-- Pantallas principales de la aplicación -->
         <activity
             android:name=".MainActivity"
             android:exported="true" />
@@ -53,9 +53,7 @@
             android:exported="true" />
         <activity
             android:name=".Edit_profile"
-            android:exported="true" />
-
-        <!-- Funcionalidades adicionales -->
+            android:exported="true" /> <!-- Funcionalidades adicionales -->
         <activity
             android:name=".Chat"
             android:exported="true" />
@@ -70,19 +68,16 @@
             android:exported="true" />
         <activity
             android:name=".Problems"
-            android:exported="true" />
-
-        <!-- Otras actividades -->
+            android:exported="true" /> <!-- Otras actividades -->
         <activity
             android:name=".Detalles_problema"
             android:exported="false" />
         <activity
-            android:name=".AddRol"
-            android:exported="false" />
-        <activity
             android:name=".ChatAdmin"
-            android:exported="false" />
-
+            android:exported="false"
+            android:theme="@style/Theme.NeighborPeace"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
     </application>
 
 </manifest>
