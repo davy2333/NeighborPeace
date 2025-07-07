@@ -41,7 +41,7 @@ import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class ChatAdmin extends AppCompatActivity {
-    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
+    private static final String BASE_URL = "http://192.168.1.125:80/WebServicesphp/";
     private static final String TAG = "ChatAdmin";
 
     private RecyclerView messagesRecyclerView;

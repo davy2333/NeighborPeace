@@ -5,7 +5,7 @@
     android:id="@+id/profileLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisPantallas"
+    android:background="@color/blancoPantallas"
     tools:context=".Profile">
 
     <!-- Icono de Flecha para retroceder -->
@@ -19,7 +19,7 @@
         android:src="?attr/homeAsUpIndicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/logo_color" />
+        app:tint="@color/colorPrimaryDark" />
 
     <!-- Texto HOME -->
     <TextView
@@ -29,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/home_profile"
-        android:textColor="#5A1C84"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/backArrow"
         app:layout_constraintTop_toTopOf="@id/backArrow" />
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/perfil_profile"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/circular_border"
+        android:background="@drawable/circle_button_background"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:contentDescription="@string/imagen_de_perfil_profile"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_profile"
@@ -162,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="@color/logo_color"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/editar_perfil"
                 android:textColor="@android:color/white" />
 
@@ -172,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/logo_color"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/cerrar_sesi_n"
                 android:textColor="@android:color/white" />
         </LinearLayout>

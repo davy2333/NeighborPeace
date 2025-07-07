@@ -31,9 +31,9 @@
         android:id="@+id/addOptionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+ Agregar opción"
-        android:textColor="#FFFFFF"
         android:layout_gravity="center"
-        android:backgroundTint="@color/Morado"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="+ Agregar opción"
+        android:textColor="#FFFFFF" />
 </LinearLayout>

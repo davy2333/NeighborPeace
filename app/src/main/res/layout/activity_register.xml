@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:autofillHints=""
-    android:background="@color/grisPantallas"
+    android:background="@color/blancoPantallas"
     android:padding="16dp"
     tools:context=".Register">
 
@@ -21,7 +21,7 @@
         android:src="?attr/homeAsUpIndicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/logo_color" />
+        app:tint="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/registroLabel"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/registro"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="44sp"
         app:layout_constraintStart_toEndOf="@id/backArrow"
         app:layout_constraintTop_toTopOf="parent" />
@@ -159,7 +159,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/logo_color"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:text="@string/registrarse"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"

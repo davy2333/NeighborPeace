@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000">
+    android:background="#FFFFFF">
 
     <!-- Header del chat -->
     <LinearLayout
         android:id="@+id/chatHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#1F1F1F"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:background="#1F1F1F">
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/back_button"
@@ -27,7 +27,7 @@
             android:layout_marginStart="16dp"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Área de mensajes -->
@@ -49,9 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#1F1F1F"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:background="#1F1F1F">
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/message_input"

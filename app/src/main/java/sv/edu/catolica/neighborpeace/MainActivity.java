@@ -37,8 +37,8 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private static final String PROBLEMS_URL = "http://192.168.0.12:80/WebServicesphp/getProblems.php";
-    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
+    private static final String PROBLEMS_URL = "http://192.168.1.125:80/WebServicesphp/getProblems.php";
+    private static final String BASE_URL = "http://192.168.1.125:80/WebServicesphp/";
 
     private ImageButton chatButton;
     private ImageButton profileButton;

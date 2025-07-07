@@ -31,7 +31,7 @@ public class Register extends AppCompatActivity {
     private CheckBox termsCheckBox;
     private Button registerButton;
     private static final String TAG = "Register";
-    private static final String REGISTER_URL = "http://192.168.0.12:80/WebServicesphp/registro.php";
+    private static final String REGISTER_URL = "http://192.168.1.125:80/WebServicesphp/registro.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

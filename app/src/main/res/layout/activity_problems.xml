@@ -5,7 +5,7 @@
     android:id="@+id/problemsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisPantallas"
+    android:background="@color/blancoPantallas"
     tools:context=".Problems">
 
     <!-- Icono de Flecha para retroceder -->
@@ -19,7 +19,7 @@
         android:src="?attr/homeAsUpIndicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/logo_color" />
+        app:tint="@color/colorPrimaryDark" />
 
     <!-- Título de la Pantalla -->
     <TextView
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/reportar_situaci_n_a_la_comunidad"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_marginTop="8dp"
                 android:importantForAutofill="no"
                 android:text="@string/t_tulo"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <EditText
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/descripci_n"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <EditText
@@ -107,7 +107,7 @@
                 android:layout_marginTop="16dp"
                 android:importantForAutofill="no"
                 android:text="@string/ubicaci_n_problemas"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <EditText
@@ -135,7 +135,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/logo_color"
+                    android:backgroundTint="@color/colorPrimaryDark"
                     android:text="@string/agregar_cono"
                     android:textColor="@android:color/white" />
 
@@ -150,7 +150,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/logo_color"
+                    android:backgroundTint="@color/colorPrimaryDark"
                     android:text="@string/agregar_foto"
                     android:textColor="@android:color/white" />
             </LinearLayout>
@@ -166,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/foto_seleccionada"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="16sp" />
 
                 <ImageView
@@ -176,12 +176,13 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:scaleType="centerCrop" />
+
                 <ImageView
                     android:id="@+id/problemIconPreview"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/ic_default"/>
+                    android:src="@drawable/ic_default" />
 
 
             </LinearLayout>
@@ -205,7 +206,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
-        android:background="@color/grisPantallas"
+        android:background="@color/colorPrimaryDark"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:labelVisibilityMode="labeled"

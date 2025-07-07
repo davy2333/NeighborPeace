@@ -32,7 +32,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class Notificaciones extends AppCompatActivity {
     private static final String TAG = "Notificaciones";
-    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
+    private static final String BASE_URL = "http://192.168.1.125:80/WebServicesphp/";
 
     private ListView notificationsListView;
     private NotificationsAdapter adapter;

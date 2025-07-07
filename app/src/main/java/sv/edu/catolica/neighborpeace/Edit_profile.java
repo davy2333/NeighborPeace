@@ -44,7 +44,7 @@ public class Edit_profile extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_IMAGE_PICK = 2;
     private static final int REQUEST_CAMERA_PERMISSION = 3;
-    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
+    private static final String BASE_URL = "http://192.168.1.125:80/WebServicesphp/";
 
     private ImageView backArrow, profileImage;
     private Button changeImageButton, saveChangesButton;

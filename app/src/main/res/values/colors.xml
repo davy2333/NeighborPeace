@@ -8,7 +8,9 @@
     <color name="naranja">#FF6F00</color>
     <color name="verde">#3BFF2D</color>
     <color name="grisPantallas">#161616</color>
+    <color name="blancoPantallas">#FFFFFF</color>
     <color name="Morado">#5A1C84</color>
+    <color name="AzulProblemas">#4169E1</color>
 
     <!-- Colores del tema de la aplicación -->
     <color name="colorPrimary">#6200EE</color>

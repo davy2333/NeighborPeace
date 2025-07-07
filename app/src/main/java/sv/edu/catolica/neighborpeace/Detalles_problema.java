@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class Detalles_problema extends AppCompatActivity {
 
     private static final String TAG = "Detalles_problema";
-    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/";
+    private static final String BASE_URL = "http://192.168.1.125:80/WebServicesphp/";
 
     private TextView problemTitle, problemDescription, problemLocation, problemStatus;
     private TextView problemDate, reporterName, reporterEmail;

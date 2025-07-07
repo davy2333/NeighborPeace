@@ -45,7 +45,7 @@ public class Problems extends AppCompatActivity {
     private static final int REQUEST_IMAGE_PICK = 2;
     private static final int REQUEST_CAMERA_PERMISSION = 3;
 
-    private static final String BASE_URL = "http://192.168.0.12:80/WebServicesphp/Problema.php";
+    private static final String BASE_URL = "http://192.168.1.125:80/WebServicesphp/Problema.php";
     private AsyncHttpClient client;
 
     private ImageView backArrow;
