@@ -32,7 +32,7 @@
         android:hint="@string/nombre_del_usuario"
         android:maxLines="1"
         android:textColor="@android:color/black"
-        android:textColorHint=""
+        android:textColorHint="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/profileButton"
